@@ -1,129 +1,585 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LOHIT ALLAVARAPU — Full-Stack Developer</title>
-<meta name="description" content="Full-Stack Developer specializing in Python, AI-powered systems, and iOS application development. Experienced in building scalable backend architectures, ATS op">
-<meta property="og:title" content="LOHIT ALLAVARAPU — Full-Stack Developer">
-<meta property="og:description" content="Full-Stack Developer specializing in Python, AI-powered systems, and iOS application development. Experienced in building scalable backend architectures, ATS op">
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-          background: #ffffff; color: #111827; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  .container { max-width: 800px; margin: 0 auto; padding: 64px 24px; }
-  header { margin-bottom: 56px; }
-  h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 8px; }
-  h1 .accent { color: #1d4ed8; }
-  .tagline { font-size: 18px; color: #6b7280; margin-bottom: 16px; }
-  .contact { font-size: 14px; color: #6b7280; }
-  .contact a { color: #111827; text-decoration: none; border-bottom: 1.5px solid #1d4ed8; padding-bottom: 1px; }
-  .contact a:hover { color: #1d4ed8; }
-  section { margin-bottom: 48px; }
-  h2 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-        color: #6b7280; margin-bottom: 16px; }
-  .summary { font-size: 17px; color: #111827; max-width: 600px; }
-  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill { display: inline-block; padding: 6px 12px; border-radius: 999px;
-           background: #f9fafb; color: #111827; font-size: 13px; font-weight: 500; }
-  .soft { display: inline-block; padding: 6px 12px; font-size: 13px; color: #6b7280; }
-  .card { background: #f9fafb; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
-  .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .card h3 { font-size: 18px; font-weight: 600; }
-  .card .meta { font-size: 13px; color: #6b7280; }
-  .card .company { font-size: 14px; color: #6b7280; margin-bottom: 8px; }
-  .card a { font-size: 13px; color: #1d4ed8; text-decoration: none; font-weight: 500; }
-  .card a:hover { text-decoration: underline; }
-  .card ul { padding-left: 18px; margin-top: 6px; }
-  .card li { font-size: 14px; color: #111827; margin-bottom: 4px; }
-  .education { font-size: 15px; color: #111827; }
-  .education .meta { color: #6b7280; font-size: 13px; }
-  footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid #f9fafb;
-            font-size: 12px; color: #6b7280; text-align: center; }
-  @media (max-width: 600px) {
-    .container { padding: 40px 20px; }
-    .card { padding: 16px 18px; }
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lohit Allavarapu · Full-Stack & AI Engineer</title>
+  <meta name="description" content="Portfolio of Lohit Allavarapu, Full-Stack & AI Engineer specializing in backend systems, automation, and scalable applications." />
+  <meta property="og:title" content="Lohit Allavarapu · Full-Stack&AI Engineer" />
+  <meta property="og:description" content="Full-Stack & AI Engineer building backend systems, automation platforms, and intelligent applications." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/preview.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #111218;
+      --text: #eaeef2;
+      --muted: #b7c0c8;
+      --brand: #7c5cff;
+      --brand-2: #50e3c2;
+      --stroke: #1f2330;
+      --ring: rgba(124, 92, 255, 0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    [data-theme="light"] {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --text: #0e1320;
+      --muted: #4a5568;
+      --brand: #6b4eff;
+      --brand-2: #00c5a1;
+      --stroke: #e6e8ef;
+      --ring: rgba(107, 78, 255, 0.35);
+      --shadow: 0 8px 24px rgba(17, 24, 39, 0.12);
+    }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .project {
+      transition: transform 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .project:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+      backdrop-filter: blur(18px);
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      color: var(--text);
+      font-weight:700;
+      cursor:pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border:none;
+      color:white;
+    }
+
+    .card {
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    /* Glassy project image hover */
+    .project .thumb img {
+      transition: transform 0.5s ease;
+    }
+
+    .project:hover .thumb img {
+      transform: scale(1.05);
+    }
+    /* Premium gradient glow for hero */
+    .hero {
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(124,92,255,0.25), transparent);
+      filter: blur(80px);
+      z-index: -1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(80,227,194,0.2), transparent);
+      filter: blur(80px);
+      z-index: -1;
+    }
+
+    .tag { transition: all 0.2s ease; }
+    .tag:hover { background: var(--brand); color: white; transform: scale(1.05); }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg); color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: saturate(140%) blur(10px);
+      background: color-mix(in srgb, var(--bg), transparent 65%);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0;
+    }
+    .brand { display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:0.2px; }
+    .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 0 0 4px var(--ring); }
+    .nav a { margin-left: 18px; font-weight: 600; color: var(--text); opacity: .9; }
+    .theme-toggle { border:1px solid var(--stroke); background: var(--panel); color: var(--text); border-radius: 999px; padding:8px 12px; cursor:pointer; box-shadow: var(--shadow); }
+
+    .hero { display:grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; padding: 56px 0; }
+    .hero .card { background: linear-gradient(180deg, color-mix(in srgb, var(--panel), transparent 5%), var(--panel)); border: 1px solid var(--stroke); border-radius: 20px; padding: 28px; box-shadow: var(--shadow); }
+    .eyebrow { display:inline-flex; align-items:center; gap:10px; font-weight:700; color: var(--brand); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; background: color-mix(in srgb, var(--brand), transparent 85%); border:1px solid color-mix(in srgb, var(--brand), transparent 60%); padding:6px 10px; border-radius:999px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.1; margin: 12px 0 10px; }
+    p.lead { font-size: clamp(15px, 2.6vw, 18px); color: var(--muted); margin: 0 0 16px; }
+    .cta { display:flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding: 12px 16px; border-radius: 12px; border:1px solid var(--stroke); background: var(--panel); color: var(--text); font-weight:700; cursor:pointer; box-shadow: var(--shadow); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; border:none; }
+    .stats { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top: 22px; }
+    .stat { background: var(--panel); border:1px solid var(--stroke); padding:16px; border-radius:14px; text-align:center; }
+    .stat b { font-size: 22px; display:block; }
+
+    .section { padding: 28px 0 10px; }
+    .section h2 { font-size: 26px; margin: 0 0 12px; }
+    .kicker { color: var(--muted); margin-top: -4px; margin-bottom: 14px; }
+
+    .skills { display:grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .tag { display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border: 1px solid var(--stroke); background: var(--panel); font-weight:600; }
+
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .project { grid-column: span 6; background: var(--panel); border:1px solid var(--stroke); border-radius: 16px; overflow: hidden; display:flex; flex-direction: column; }
+    .project .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, color-mix(in srgb, var(--brand), transparent 65%), color-mix(in srgb, var(--brand-2), transparent 65%)); display:flex; align-items:center; justify-content:center; font-weight:800; letter-spacing:1px; }
+    .project .body { padding: 14px 16px 18px; }
+    .project .meta { color: var(--muted); font-size: 14px; }
+    .chips { display:flex; gap:8px; flex-wrap: wrap; margin-top: 10px; }
+    .chip { border:1px dashed var(--stroke); padding:6px 8px; border-radius:999px; font-size: 12px; color: var(--muted); }
+
+    .process { display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+    .step { background: var(--panel); border:1px solid var(--stroke); border-radius: 12px; padding: 14px; }
+    .step .num { width:28px; height:28px; border-radius:999px; display:inline-grid; place-items:center; background: color-mix(in srgb, var(--brand), transparent 75%); border:1px solid color-mix(in srgb, var(--brand), transparent 40%); font-weight:700; margin-right: 6px; }
+
+    .about { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .about .card { background: var(--panel); border:1px solid var(--stroke); border-radius: 14px; padding: 16px; }
+
+    .contact { display:grid; grid-template-columns: 1.1fr 1fr; gap: 16px; }
+    form { display:grid; gap:12px; }
+    .field { display:grid; gap:6px; }
+    input, textarea { padding: 12px; border-radius: 10px; border:1px solid var(--stroke); background: var(--panel); color: var(--text); }
+    input:focus, textarea:focus, .btn:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+    .footer { margin: 36px 0 60px; display:flex; align-items:center; justify-content: space-between; color: var(--muted); }
+
+    .pill { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--stroke); background: var(--panel); padding:8px 12px; border-radius:999px; }
+
+    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus { position: static; width:auto; height:auto; margin: 10px; }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+      .contact, .about { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: repeat(2,1fr); }
+      .process { grid-template-columns: repeat(2,1fr); }
+      .project { grid-column: span 12; }
+      .stats { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 560px) {
+      .skills { grid-template-columns: 1fr; }
+      .process { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>LOHIT <span class="accent">ALLAVARAPU</span></h1>
-    <p class="tagline">Full-Stack Developer</p>
-    <p class="contact"><a href="mailto:lohitallavarapu@gmail.com">Email</a> · <a href="https://LinkedIn" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://GitHub" target="_blank" rel="noopener">GitHub</a> · <a href="https://Portfolio" target="_blank" rel="noopener">Website</a></p>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="container nav-inner" role="navigation" aria-label="Primary">
+      <div class="brand" aria-label="Home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Lohit Allavarapu</span>
+      </div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀︎/☾</button>
+      </nav>
+    </div>
   </header>
 
-  <section><h2>About</h2><p class="summary">Full-Stack Developer specializing in Python, AI-powered systems, and iOS application development. Experienced in building scalable backend architectures, ATS optimization engines, and job automation platforms. Strong expertise in FastAPI, Django, REST APIs, and Swift-based mobile development. Proven ability to deliver high-performance systems with measurable impact, improved efficiency, and reduced operational costs.</p></section>
-
-  <section><h2>Skills</h2><div class="skills"><span class="skill">Python</span><span class="skill">FastAPI</span><span class="skill">Django</span><span class="skill">Flask</span><span class="skill">REST APIs</span><span class="skill">SQLAlchemy</span><span class="skill">Pandas</span><span class="skill">NumPy</span><span class="skill">AI Integration</span><span class="skill">Prompt Engineering</span><span class="skill">Swift</span><span class="skill">SwiftUI</span><span class="skill">UIKit</span><span class="skill">Combine</span><span class="skill">Core Data</span><span class="skill">MVC</span><span class="skill">MVVM</span><span class="skill">iOS SDK</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript (ES6+)</span><span class="skill">React.js</span><span class="skill">TailwindCSS</span><span class="skill">MySQL</span><span class="skill">PostgreSQL</span><span class="skill">SQLite</span><span class="skill">Docker</span><span class="skill">Git</span><span class="skill">Linux</span><span class="skill">AWS</span><span class="skill">System Design</span><span class="skill">Data Structures &amp; Algorithms</span><span class="skill">API Integration</span><span class="skill">OAuth</span></div></section>
-
-  <section><h2>Experience</h2>
-        <div class="card">
-          <div class="card-head">
-            <h3>Full-Stack Developer</h3>
-            <span class="meta">2024 – Present</span>
-          </div>
-          <div class="company">Self / Personal Projects</div>
-          <ul><li>Developed AI-driven resume optimization and job automation platforms</li><li>Designed scalable backend systems handling high-volume API requests</li><li>Built automation pipelines reducing manual job application effort</li><li>Improved system efficiency and reduced operational costs through optimized logic</li><li>Continuously enhanced features based on performance metrics and usability</li></ul>
-        </div></section>
-
-  <section><h2>Projects</h2>
-        <div class="card">
-          <div class="card-head">
-            <h3>ResumeAI – ATS Resume Scanner &amp; Builder</h3>
-            
-          </div>
-          <div class="meta">Python, FastAPI, SQLite, NLP</div>
-          <ul><li>Developed a Python-based ATS scoring engine (0–100) evaluating resumes based on keyword matching, formatting, and content quality</li><li>Built hybrid system combining rule-based parsing and AI enhancements, improving resume scores from ~70 to 90+</li><li>Implemented keyword extraction and job description matching, increasing ATS compatibility by 70+%</li><li>Engineered automated resume rewriting system using action verbs, quantified metrics, and structured formatting</li><li>Reduced external AI API usage by 60% through optimized backend logic</li><li>Designed modular architecture supporting scalability and future ML integration</li></ul>
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <div class="fade-in">
+        <span class="eyebrow">Full-Stack · AI Engineer</span>
+        <h1>Building scalable backend systems and AI-driven applications.</h1>
+        <p class="lead">I’m <strong>Lohit Allavarapu</strong>, a Full-Stack Developer specializing in Python, AI systems, and backend architecture.
+I build production-ready applications like ATS optimization engines, job automation platforms, and intelligent data systems.</p>
+        <div class="cta">
+          <a class="btn" href="https://github.com/Lohit-A-Design" target="_blank">GitHub ↗</a>
+          <a class="btn primary" href="#work">View my work</a>
+          <a class="btn" href="Resume.pdf" download>Download Resume</a>
+          <span class="pill">📍 Based in Vizianagaram, Andhra Pradesh, India</span>
         </div>
-        <div class="card">
-          <div class="card-head">
-            <h3>ResumeAI – Job Automation Platform</h3>
-            
-          </div>
-          <div class="meta">FastAPI, PostgreSQL, Celery, Redis</div>
-          <ul><li>Built scalable job automation system handling end-to-end job search workflows</li><li>Integrated multiple job APIs, fetching 250+ job listings per query</li><li>Developed job-matching algorithm using Pandas and NumPy, improving match accuracy by 25%</li><li>Created Chrome extension automating 80% of job applications</li><li>Designed job ranking engine processing 1000 jobs per minute (95% accuracy)</li><li>Implemented asynchronous processing using Celery and Redis</li><li>Improved system performance by 40% through batching and rate-limiting strategies</li></ul>
-        </div>
-        <div class="card">
-          <div class="card-head">
-            <h3>AI Short Generator</h3>
-            <a href="https://[Project Link]" target="_blank" rel="noopener">View →</a>
-          </div>
-          <div class="meta">JavaScript, OpenAI API, TailwindCSS</div>
-          <ul><li>Built AI-powered web app for generating short-form content</li><li>Implemented prompt optimization and keyword recognition system</li><li>Reduced content creation time by 60%</li><li>Designed responsive UI with optimized performance</li></ul>
-        </div>
-        <div class="card">
-          <div class="card-head">
-            <h3>Restaurant iOS Application</h3>
-            <a href="https://[Project Link]" target="_blank" rel="noopener">View →</a>
-          </div>
-          <div class="meta">Swift, UIKit, Core Data</div>
-          <ul><li>Developed iOS application with real-time search, product listings, and media previews</li><li>Implemented MVC and MVVM architecture</li><li>Integrated REST APIs and local database storage</li><li>Improved task completion rate from 65% to 90%</li><li>Optimized UI performance and user experience</li></ul>
-        </div>
-        <div class="card">
-          <div class="card-head">
-            <h3>FNOL Claims Processing &amp; Routing Agent</h3>
-            <a href="https://[Project Link]" target="_blank" rel="noopener">View →</a>
-          </div>
-          <div class="meta">Python, PDFPlumber, Rule-Based Engine</div>
-          <ul><li>Built a lightweight autonomous system to process FNOL insurance documents</li><li>Implemented document parsing pipeline supporting TXT and PDF inputs</li><li>Extracted key fields such as policy number, incident date, claim type, and estimated damage</li><li>Developed rule-based engine to classify and route claims based on business logic</li></ul>
-        </div>
-        <div class="card">
-          <div class="card-head">
-            <h3>Personal Portfolio Website</h3>
-            <a href="https://[Project Link]" target="_blank" rel="noopener">View →</a>
-          </div>
-          <div class="meta">HTML, CSS, JavaScript</div>
-          <ul><li>Built SEO-optimized portfolio website (95+ Lighthouse score)</li><li>Improved recruiter engagement by 40%</li><li>Designed responsive and performance-optimized UI</li></ul>
-        </div></section>
+        <div class="stats" aria-label="Quick stats">
+  <div class="stat">
+    <b>6+</b>
+    <span>Production-Level Projects</span>
+  </div>
 
-  <section><h2>Education</h2><div class="education"><strong>MVGR College of Engineering</strong> · B.Tech – Electrical &amp; Electronics Engineering<div class="meta">2022</div></div></section>
+  <div class="stat">
+    <b>Python + FastAPI</b>
+    <span>Core Stack</span>
+  </div>
 
-  <footer>
-    Generated by ResumeAI Coach · Drop into GitHub Pages, Netlify, or Cloudflare Pages.
-  </footer>
+  <div class="stat">
+    <b>AI + Automation</b>
+    <span>System Focus</span>
+  </div>
 </div>
+      </div>
+      <div class="card fade-in" aria-label="Showcase">
+        <img src="profile.JPG" alt="Lohit Allavarapu profile photo" />
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" aria-label="Skills">
+      <h2>Core skills</h2>
+      <p class="kicker">Focused on building scalable backend systems and AI-powered applications.</p>
+      <div class="skills fade-in">
+        <div class="tag">Python</div>
+        <div class="tag">FastAPI</div>
+        <div class="tag">Django</div>
+        <div class="tag">PostgreSQL</div>
+        <div class="tag">Docker</div>
+        <div class="tag">Git</div>
+        <div class="tag">Linux</div>
+        <div class="tag">AWS</div>
+        <div class="tag">Pandas</div>
+        <div class="tag">NumPy</div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section" aria-label="Selected work">
+      <h2>Selected work</h2>
+      <p class="kicker">Projects showcasing backend systems, AI applications, and automation platforms.</p>
+      <div class="grid fade-in">
+        <article class="project">
+          <div class="thumb">
+            <a href="resumeai.png" target="_blank">
+              <img src="resumeai.png" alt="ResumeAI Preview" />
+            </a>
+          </div>
+          <div class="body">
+            <h3>ResumeAI – ATS Resume Scanner & Builder</h3>
+            <p class="meta">Python · FastAPI · Backend System</p>
+            <div class="chips">
+              <span class="chip">ATS Engine</span>
+              <span class="chip">AI Optimization</span>
+              <span class="chip">Automation</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn">Private Repo (Available on Request)</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb">
+            <a href="jobauto.png" target="_blank">
+              <img src="jobauto.png" alt="Job Automation Preview" />
+            </a>
+          </div>
+          <div class="body">
+            <h3>ResumeAI – Job Automation Platform</h3>
+            <p class="meta">FastAPI · PostgreSQL · Automation</p>
+            <div class="chips">
+              <span class="chip">Job APIs</span>
+              <span class="chip">Automation</span>
+              <span class="chip">Data Processing</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn">Private Repo (Available on Request)</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb">
+            <a href="test3.png" target="_blank">
+              <img src="test3.png" alt="FNOL Preview" />
+            </a>
+          </div>
+          <div class="body">
+            <h3>FNOL Claims Processing Agent</h3>
+            <p class="meta">Python · PDF Processing · Rule Engine</p>
+            <div class="chips">
+              <span class="chip">PDF Parsing</span>
+              <span class="chip">Data Extraction</span>
+              <span class="chip">Rule Engine</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="https://github.com/Lohit-A-Design/claim-agent" target="_blank">View Code ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb">
+            <a href="test4.png" target="_blank">
+              <img src="test4.png" alt="AI Short Generator Preview" />
+            </a>
+          </div>
+          <div class="body">
+            <h3>AI Short Generator</h3>
+            <p class="meta">JavaScript · OpenAI API · Web App</p>
+            <div class="chips">
+              <span class="chip">Content Generation</span>
+              <span class="chip">Prompt Engineering</span>
+              <span class="chip">Automation</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="https://github.com/Lohit-A-Design/ai-short-generator/tree/main/ai-shorts-generator" target="_blank">View Code ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="thumb">
+            <a href="iosapp.png" target="_blank">
+              <img src="iosapp.png" alt="iOS App Preview" />
+            </a>
+          </div>
+          <div class="body">
+            <h3>Restaurant iOS Application</h3>
+            <p class="meta">Swift · UIKit · Core Data</p>
+            <div class="chips">
+              <span class="chip">MVVM</span>
+              <span class="chip">API Integration</span>
+              <span class="chip">UI Performance</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="https://github.com/Lohit-A-Design/restaurant-storyboard-app" target="_blank">View Code ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="section" aria-label="Design process">
+      <h2>My process</h2>
+      <p class="kicker">Flexible, hypothesis-driven, and user‑centric.</p>
+      <div class="process">
+        <div class="step"><span class="num">1</span><strong>Discover:</strong> Stakeholder chats, problem framing, quick audits.</div>
+        <div class="step"><span class="num">2</span><strong>Define:</strong> Jobs-to-be-done, success metrics, north-star flow.</div>
+        <div class="step"><span class="num">3</span><strong>Design:</strong> Wireframes → hi‑fi mockups → interactive prototypes.</div>
+        <div class="step"><span class="num">4</span><strong>Validate:</strong> Usability tests, iterate, handoff with specs.</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about" aria-label="About me">
+      <div class="card fade-in">
+        <h2>About me</h2>
+        <p>I’m <strong>Lohit Allavarapu</strong>, a Full-Stack Developer focused on building scalable backend systems and AI-powered applications. My work includes ATS optimization engines, job automation platforms, and intelligent data processing systems.</p>
+        <p>Education: B.Tech in Electrical & Electronics Engineering, JNTU Kakinada – MVGR College of Engineering.</p>
+        <p class="kicker">Currently exploring: scalable system design, AI automation, and backend optimization.</p>
+      </div>
+      <div class="card fade-in">
+        <h2>Toolbox</h2>
+        <div class="skills">
+          <div class="tag">Python</div>
+          <div class="tag">FastAPI</div>
+          <div class="tag">Django</div>
+          <div class="tag">PostgreSQL</div>
+          <div class="tag">Docker</div>
+          <div class="tag">Git</div>
+          <div class="tag">Linux</div>
+          <div class="tag">AWS</div>
+          <div class="tag">Pandas</div>
+          <div class="tag">NumPy</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact" aria-label="Contact">
+      <div>
+        <h2>Let’s collaborate</h2>
+        <p class="kicker">Open to internships, junior roles, or freelance projects.</p>
+        <div class="tag" style="margin:12px 0; display:inline-flex;">📧 <strong style="margin-left:6px"><a href="mailto:lohitallavarapu@gmail.com">lohitallavarapu@gmail.com</a></strong></div>
+        <p>Prefer a form? Drop a message—I'll reply within 24–48 hours.</p>
+      </div>
+      <div class="card">
+        <form action="https://formspree.io/f/your-id" method="POST" aria-label="Contact form">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Lohit Allavarapu. All rights reserved.</span>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="pill" href="mailto:allavarapulohit@gmail.com">Email</a>
+        <a class="pill" href="https://www.behance.net/lohitnarayan" target="_blank" rel="noopener noreferrer external" onclick="window.open(this.href,'_blank','noopener'); return false;">Behance</a>
+        <a class="pill" href="#" aria-disabled="true" style="opacity:.5; pointer-events:none;">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Simple Modals for Case Study Summaries -->
+  <dialog id="proj1" aria-labelledby="proj1-title-modal">
+    <article class="card" style="max-width:720px; border:1px solid var(--stroke);">
+      <h3 id="proj1-title-modal">Jewellery Product Page Redesign – Case Study (Snapshot)</h3>
+      <p><strong>Context:</strong> Existing jewellery product page lacked clarity, image emphasis, and CTA focus.
+      <br><strong>Role:</strong> UI/UX Designer · <strong>Tools:</strong> Figma · <strong>Duration:</strong> Mar–Apr 2024</p>
+      <ul>
+        <li>Research: heuristic review, competitor benchmarking, light user feedback.</li>
+        <li>Design: wireframes → hi‑fi; improved gallery, variant selection, pricing specs.</li>
+        <li>Testing: interactive prototype; iterations based on usability findings.</li>
+        <li>Outcome: clearer product details, better image interaction, stronger CTA hierarchy.</li>
+      </ul>
+      <div class="cta">
+        <a class="btn primary" href="https://www.behance.net/gallery/168568869/UX-case-study-jewellery-product-page-Re-design" target="_blank" rel="noopener">Open full case study ↗</a>
+        <button class="btn" data-close>Close</button>
+      </div>
+    </article>
+  </dialog>
+
+  <dialog id="proj2" aria-labelledby="proj2-title-modal">
+    <article class="card" style="max-width:720px; border:1px solid var(--stroke);">
+      <h3 id="proj2-title-modal">Coffee House Platform / App – Case Study (Snapshot)</h3>
+      <p><strong>Context:</strong> Many café apps suffer from cluttered menus and confusing ordering flows.
+      <br><strong>Role:</strong> UI/UX Designer · <strong>Tools:</strong> Figma · <strong>Duration:</strong> Jun–Aug 2023</p>
+      <ul>
+        <li>Discovery: competitor benchmarking; user journeys for menu → customize → checkout.</li>
+        <li>Design: low‑fi to hi‑fi; key screens for menu, drink customization, cart, checkout.</li>
+        <li>Testing: clickable prototype; fixed unclear buttons and back navigation issues.</li>
+        <li>Outcome: improved clarity, reduced cognitive load, stronger brand consistency.</li>
+      </ul>
+      <div class="cta">
+        <a class="btn primary" href="https://www.behance.net/gallery/168568869/UX-case-study-jewellery-product-page-Re-design" target="_blank" rel="noopener">Open full case study ↗</a>
+        <button class="btn" data-close>Close</button>
+      </div>
+    </article>
+  </dialog>
+
+  <dialog id="proj3" aria-labelledby="proj3-title-modal">
+    <article class="card" style="max-width:720px; border:1px solid var(--stroke);">
+      <h3 id="proj3-title-modal">Portfolio Website – Case Study (Snapshot)</h3>
+      <p>Built a lightweight, accessible site (no frameworks) scoring 95+ on Lighthouse.</p>
+      <div class="cta">
+        <a class="btn primary" href="#">Open full case study ↗</a>
+        <button class="btn" data-close>Close</button>
+      </div>
+    </article>
+  </dialog>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle with localStorage
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+    themeToggle?.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Modal handling
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.getAttribute('data-modal');
+        const dlg = document.getElementById(id);
+        dlg?.showModal();
+      });
+    });
+    document.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', () => btn.closest('dialog')?.close()));
+
+    // Close modals on backdrop click
+    document.querySelectorAll('dialog').forEach(dlg => {
+      dlg.addEventListener('click', (e) => {
+        const rect = dlg.getBoundingClientRect();
+        const inDialog = rect.top <= e.clientY && e.clientY <= rect.top + rect.height && rect.left <= e.clientX && e.clientX <= rect.left + rect.width;
+        if (!inDialog) dlg.close();
+      });
+    });
+  </script>
+  <!-- Force external links (e.g., Behance) to open in a real new tab to avoid iframe/sandbox block errors -->
+  <script>
+    document.querySelectorAll('a[rel~="external"], a[target="_blank"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        // If the environment tries to load in an iframe, explicitly open a new tab
+        if (!this.href.startsWith('#')) {
+          e.preventDefault();
+          window.open(this.href, '_blank', 'noopener');
+        }
+      });
+    });
+  </script>
 </body>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth fade stagger
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+  });
+</script>
 </html>
