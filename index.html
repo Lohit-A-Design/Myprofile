@@ -33,6 +33,22 @@
       --ring: rgba(107, 78, 255, 0.35);
       --shadow: 0 8px 24px rgba(17, 24, 39, 0.12);
     }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .project { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .project:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+
+    .btn { transition: all 0.25s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+    .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.25); }
+
+    .tag { transition: all 0.2s ease; }
+    .tag:hover { background: var(--brand); color: white; transform: scale(1.05); }
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -143,14 +159,14 @@
   <main id="main" class="container">
     <!-- HERO -->
     <section class="hero" aria-label="Intro">
-      <div>
+      <div class="fade-in">
         <span class="eyebrow">Full-Stack · AI Engineer</span>
         <h1>Building scalable backend systems and AI-driven applications.</h1>
         <p class="lead">I’m <strong>Lohit Allavarapu</strong>, a Full-Stack Developer specializing in Python, AI systems, and backend architecture.
 I build production-ready applications like ATS optimization engines, job automation platforms, and intelligent data systems.</p>
         <div class="cta">
           <a class="btn primary" href="#work">View my work</a>
-          <a class="btn" href="Resume.pdf" download>Download Lohit</a>
+          <a class="btn" href="Resume.pdf" download>Download Resume</a>
           <span class="pill">📍 Based in Vizianagaram, Andhra Pradesh, India</span>
         </div>
         <div class="stats" aria-label="Quick stats">
@@ -170,7 +186,7 @@ I build production-ready applications like ATS optimization engines, job automat
   </div>
 </div>
       </div>
-      <div class="card" aria-label="Showcase">
+      <div class="card fade-in" aria-label="Showcase">
         <img src="profile.JPG" alt="Lohit Allavarapu profile photo" />
       </div>
     </section>
@@ -179,7 +195,7 @@ I build production-ready applications like ATS optimization engines, job automat
     <section class="section" aria-label="Skills">
       <h2>Core skills</h2>
       <p class="kicker">Focused on building scalable backend systems and AI-powered applications.</p>
-      <div class="skills">
+      <div class="skills fade-in">
         <div class="tag">Python</div>
         <div class="tag">FastAPI</div>
         <div class="tag">Django</div>
@@ -197,7 +213,7 @@ I build production-ready applications like ATS optimization engines, job automat
     <section id="work" class="section" aria-label="Selected work">
       <h2>Selected work</h2>
       <p class="kicker">Projects showcasing backend systems, AI applications, and automation platforms.</p>
-      <div class="grid">
+      <div class="grid fade-in">
         <article class="project">
           <div class="thumb">AI</div>
           <div class="body">
@@ -288,13 +304,13 @@ I build production-ready applications like ATS optimization engines, job automat
 
     <!-- ABOUT -->
     <section id="about" class="section about" aria-label="About me">
-      <div class="card">
+      <div class="card fade-in">
         <h2>About me</h2>
         <p>I’m <strong>Lohit Allavarapu</strong>, a Full-Stack Developer focused on building scalable backend systems and AI-powered applications. My work includes ATS optimization engines, job automation platforms, and intelligent data processing systems.</p>
         <p>Education: B.Tech in Electrical & Electronics Engineering, JNTU Kakinada – MVGR College of Engineering.</p>
         <p class="kicker">Currently exploring: scalable system design, AI automation, and backend optimization.</p>
       </div>
-      <div class="card">
+      <div class="card fade-in">
         <h2>Toolbox</h2>
         <div class="skills">
           <div class="tag">Python</div>
@@ -445,4 +461,15 @@ I build production-ready applications like ATS optimization engines, job automat
     });
   </script>
 </body>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </html>
